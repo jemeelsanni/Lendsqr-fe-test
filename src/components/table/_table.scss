@@ -1,0 +1,71 @@
+@use "/src/styles/index.scss" as v;
+
+.table-container {
+  color: v.$col-grey-500;
+
+  .card {
+    overflow-x: auto;
+    overflow-y: clip;
+    max-width: 100%;
+  }
+
+  table {
+    width: 100%;
+    min-height: 40rem;
+    @include v.media("<desktop") {
+      min-width: 1100px;
+    }
+
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding-bottom: 1.875rem;
+
+      div {
+        @include v.flex;
+      }
+
+      .filter-icon {
+        margin-left: 0.425rem;
+        width: 1rem;
+        display: inline-block;
+        cursor: pointer;
+      }
+    }
+
+    .table-row {
+      td {
+        padding: 1rem 0;
+        font-size: 0.875rem;
+      }
+
+      &:not(:first-of-type) {
+        border-top: 1px solid rgba(v.$text-color, 0.1);
+      }
+    }
+  }
+
+  .table-selection-details {
+    margin-top: 1.25rem;
+    @include v.flex($justify: space-between, $align: center);
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    flex-direction: row-reverse;
+
+    .current-count {
+      font-size: 0.875rem;
+      @include v.flex($align: center);
+      span {
+        padding: 0 0.625rem;
+
+        .react-select__control {
+          background-color: v.$border-color !important;
+        }
+      }
+    }
+  }
+}

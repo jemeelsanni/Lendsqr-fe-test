@@ -1,0 +1,15 @@
+@use "/src/styles/index.scss" as v;
+@use "../fillbutton/_button.scss" as button;
+
+.outlined-btn {
+  @extend button, .btn;
+  color: v.$primary-color;
+  border: 1px solid v.$primary-color;
+  border-radius: 0.5rem;
+  background-color: transparent;
+
+  &:hover {
+    background-color: v.$primary-color;
+    color: #fff;
+  }
+}

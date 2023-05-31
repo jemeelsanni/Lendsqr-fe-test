@@ -1,0 +1,77 @@
+@use "../../styles/index.scss" as v;
+
+.sidebar {
+  width: v.$sidebar-width;
+  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1.8125rem 0;
+
+  .nav-link-group {
+    margin-top: 1.9375rem;
+    @include v.flex;
+    flex-direction: column;
+
+    h4 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0 v.$sidebar-padding;
+      text-transform: uppercase;
+      margin-bottom: 0.625rem;
+    }
+    a {
+      width: 100%;
+    }
+  }
+
+  .switch-organization {
+    margin-bottom: 2rem;
+  }
+
+  .nav-link {
+    @include v.flex($align: center);
+    gap: 0.625rem;
+    padding: 0.625rem v.$sidebar-padding;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    .icon {
+      width: 1rem;
+      @include v.flex($align: center);
+    }
+
+    .dropdown.icon {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    &:not(.switch-organization .nav-link) {
+      &:not(.active) {
+        opacity: 0.6;
+      }
+    }
+
+    &:hover {
+      background-color: v.$sidebar-active-bg;
+    }
+  }
+
+  .nav-link.active {
+    position: relative;
+    opacity: 1;
+    background-color: v.$sidebar-active-bg;
+
+    &::before {
+      width: 0.3rem;
+      background-color: v.$primary-color;
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

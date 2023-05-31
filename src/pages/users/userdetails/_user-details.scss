@@ -1,0 +1,186 @@
+@use "/src/styles/index.scss" as v;
+
+$section-spacing: 1.875rem;
+
+.user-details-page {
+  .page-heading {
+    @include v.flex($align: center, $justify: space-between);
+    flex-wrap: wrap;
+    gap: 0.625rem;
+
+    .button-row {
+      @include v.flex($align: center, $justify: center);
+      gap: 1.25rem;
+
+      button {
+        letter-spacing: 0.1em;
+        padding: 0.75rem 1rem;
+        text-transform: uppercase;
+      }
+
+      .blacklist-btn {
+        border-color: v.$danger;
+        color: v.$danger;
+        &:hover {
+          background-color: v.$danger;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .basic-info-container {
+    padding-bottom: 0;
+
+    .basic-info {
+      @include v.flex($align: center);
+      flex-wrap: wrap;
+      gap: 1.875rem;
+      margin-bottom: 3.125rem;
+
+      .user-info {
+        @include v.flex($align: center);
+      }
+
+      .avater {
+        @include v.flex($align: center, $justify: center);
+        width: 6.25rem;
+        height: auto;
+        border-radius: 50%;
+        overflow: hidden;
+        background: rgba(v.$col-blue-800, $alpha: 0.16);
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .name,
+      .financial-info {
+        h2 {
+          font-size: 1.375rem;
+          font-weight: 500;
+          word-break: break-all;
+        }
+
+        p {
+          font-size: 0.875rem;
+          font-weight: 400;
+          margin-top: 0.5rem;
+        }
+      }
+
+      .name {
+        margin-left: 1.25rem;
+        p {
+          color: v.$col-grey-500;
+        }
+      }
+
+      .financial-info {
+        p {
+          margin-top: 0.5rem;
+          font-size: 0.75rem;
+        }
+      }
+
+      .tier {
+        height: 5rem;
+        font-size: 0.875rem;
+        font-weight: 400;
+        padding: 0 1.875rem;
+        border-left: 1px solid rgba(v.$col-grey-500, $alpha: 0.2);
+        border-right: 1px solid rgba(v.$col-grey-500, $alpha: 0.2);
+        @include v.flex($align: center, $justify: center);
+        flex-direction: column;
+
+        p {
+          margin-bottom: 0.675rem;
+          font-weight: 500;
+          color: v.$col-grey-500;
+        }
+      }
+    }
+
+    .tab-list-container {
+      overflow-x: auto;
+      max-width: 100%;
+
+      .react-tabs__tab-list {
+        list-style-type: none;
+        @include v.flex($align: center, $justify: space-between);
+        min-width: 800px;
+
+        .react-tabs__tab {
+          padding: 0.675rem 1.25rem;
+          color: #00000080;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            color: v.$primary-color;
+          }
+        }
+
+        .react-tabs__tab--selected {
+          position: relative;
+          outline: 0;
+          color: v.$primary-color;
+
+          &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: v.$primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .full-details-container {
+    margin-top: $section-spacing;
+    .detail-section {
+      font-weight: 500;
+
+      .detail-row {
+        padding: $section-spacing 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: $section-spacing;
+        @include v.media("<tablet") {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .detail-field {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .field-title {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: v.$col-grey-500;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      &.employment {
+        .detail-row {
+          grid-template-columns: repeat(4, 1fr);
+          @include v.media("<tablet") {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          }
+        }
+      }
+
+      &:not(:first-of-type) {
+        padding-top: $section-spacing;
+        border-top: 1px solid rgba(v.$col-blue-800, $alpha: 0.1);
+      }
+    }
+  }
+}

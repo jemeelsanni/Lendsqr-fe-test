@@ -1,0 +1,124 @@
+@use "../../styles/index.scss" as v;
+
+.topbar {
+  display: grid;
+  grid-template-columns: v.$sidebar-width 1fr;
+  place-content: center;
+  width: 100%;
+  height: v.$topbar-height;
+  padding: 1.875rem 0;
+  background-color: #fff;
+  box-shadow: 3px 0px 20px 0px #0000000a;
+
+  .logo-container {
+    width: v.$sidebar-width;
+    padding: 0 v.$sidebar-padding;
+    @include v.flex($align: center);
+
+    button {
+      width: 1.6rem;
+      margin-right: 1rem;
+      background: none;
+      color: v.$text-color;
+      display: none;
+      @include v.media("<desktop") {
+        @include v.flex($align: center);
+      }
+    }
+
+    .logo {
+      width: 9.05rem;
+      @include v.flex($align: center);
+    }
+  }
+
+  .topbar-content {
+    @include v.flex($align: center, $justify: space-between);
+    padding: 0 v.$body-padding-desktop;
+    width: 100%;
+    .icon {
+      cursor: pointer;
+      @include v.flex($justify: center, $align: center);
+    }
+
+    .search {
+      position: relative;
+      input {
+        width: 21.6rem;
+        margin-right: 2.4rem;
+      }
+
+      .icon {
+        background-color: v.$primary-color;
+        padding: 0.75rem 1.2rem;
+        height: 100%;
+        border-top-right-radius: v.$input-radius;
+        border-bottom-right-radius: v.$input-radius;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .shortcuts {
+      @include v.flex($align: center);
+      gap: 1.875rem;
+
+      .docs {
+        font-family: Roboto;
+        cursor: pointer;
+      }
+
+      .icon.search {
+        display: none;
+      }
+
+      .icon.notification {
+        width: 1.25rem;
+      }
+
+      .user-data {
+        @include v.flex($align: center);
+        gap: 0.625rem;
+        font-weight: 500;
+        cursor: pointer;
+
+        img {
+          border-radius: v.$rounded-full;
+          aspect-ratio: 1;
+          width: 3rem;
+          height: 3rem;
+        }
+
+        .icon {
+          width: 0.5rem;
+          height: 0.5rem;
+        }
+      }
+    }
+
+    @include v.media("<desktop") {
+      @include v.flex($align: center, $justify: flex-end);
+
+      .search,
+      .shortcuts .docs,
+      .user-data .name {
+        display: none;
+      }
+
+      .shortcuts .icon.search {
+        display: block;
+      }
+    }
+  }
+
+  .logo-container,
+  .topbar-content {
+    @include v.media("<desktop") {
+      padding: 0 v.$body-padding-tablet;
+    }
+    @include v.media("<tablet") {
+      padding: 0 v.$body-padding-mobile;
+    }
+  }
+}

@@ -1,0 +1,183 @@
+@use "../../styles/index.scss" as v;
+@use "/src/styles/responsiveness/layout.scss" as layout;
+@use "/src/styles/base/variables" as variable;
+
+.login-page {
+  @include v.flex;
+  width: 100%;
+  background: v.$col-grey-100;
+  font-family: "AvenirNext";
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .page-subheading {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: v.$col-grey-500;
+    margin-top: 0.725rem;
+  }
+
+  .svg-section {
+    width: 51.11%;
+    min-height: 100vh;
+    padding: 4.625% 4.625% 9.25%;
+    position: relative;
+
+    .logo {
+      padding-left: 2rem;
+      width: 10.875rem;
+    }
+
+    .illustration-container {
+      margin: 0 auto;
+      width: 81.1%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @include v.media("<desktop") {
+      display: none;
+    }
+  }
+
+  .form-section-container {
+    min-height: 100vh;
+    width: 48.89%;
+    background-color: #fff;
+    @include v.flex($align: center, $justify: center);
+
+    @include v.media("<desktop") {
+      width: 100%;
+    }
+
+    padding: 2rem 9.8125rem 2rem 6.25rem;
+    @include v.media("<desktop") {
+      padding: 2rem;
+    }
+
+    .form-section {
+      width: 100%;
+      @include v.media("<desktop") {
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      @include v.flex($align: flex-start, $justify: center);
+      flex-direction: column;
+
+      .logo {
+        display: none;
+        @include v.media("<desktop") {
+          display: block;
+          width: 10.875rem;
+          margin-bottom: 5rem;
+        }
+      }
+
+      form {
+        @include v.flex($align: flex-start, $justify: center);
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        padding-top: 3.75rem;
+
+        .input-field {
+          width: 100%;
+          position: relative;
+
+          .input-field-container input {
+            padding: 1rem 1.01rem;
+          }
+
+          .input-error {
+            color: v.$col-red-800;
+            font-size: 0.75rem;
+          }
+          .input-field-container {
+            width: 100%;
+            font-size: 0.875rem;
+            border: 1px solid;
+            border-color: rgba(v.$col-grey-500, 15%);
+            border-radius: v.$input-radius;
+            @include v.flex($align: center);
+
+            &:focus-within {
+              border-color: rgba(v.$col-blue-800, 80%);
+            }
+
+            input {
+              width: 100%;
+              padding: 0.75rem 1.2rem;
+              border-radius: v.$input-radius;
+              border: 0;
+              outline: 0;
+              font-size: inherit;
+
+              &:active,
+              :focus {
+                border: 0;
+                outline: 0;
+              }
+
+              &::placeholder {
+                color: v.$col-grey-500;
+              }
+            }
+
+            .input-error {
+              color: v.$col-red-600;
+            }
+          }
+
+          .password {
+            input {
+              padding-right: 15%;
+            }
+            .password-visibility {
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+            }
+          }
+        }
+
+        .forgot-password,
+        .input-field span {
+          color: v.$primary-color;
+          font-size: 0.75rem;
+          font-weight: 600;
+          cursor: pointer;
+          padding-right: 1.01rem;
+        }
+
+        .btn {
+          @include layout.flex($align: center, $justify: center);
+          gap: 0.5rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          padding: 0.75rem 1.875rem;
+          border: 0;
+          border-radius: 0.5rem;
+          background-color: variable.$primary-color;
+          color: white;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background-color: darken(
+              $color: variable.$primary-color,
+              $amount: 10
+            );
+          }
+          margin-top: 0.375rem;
+          width: 100%;
+          color: white;
+        }
+      }
+    }
+  }
+}

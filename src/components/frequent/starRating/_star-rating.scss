@@ -1,0 +1,23 @@
+@use "/src/styles/responsiveness/layout.scss" as v;
+
+.star-rating {
+  @include v.flex($align: center, $justify: flex-start);
+  gap: 0.25rem;
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .on {
+    color: #000;
+  }
+  .off {
+    color: #ccc;
+  }
+
+  .star {
+    display: inline-block;
+  }
+}

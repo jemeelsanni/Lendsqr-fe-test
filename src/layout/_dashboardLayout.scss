@@ -1,0 +1,46 @@
+@use "../styles/index.scss" as v;
+
+.layout {
+  min-height: 100vh;
+  width: 100%;
+
+  .topbar {
+    position: fixed;
+    top: 0;
+    z-index: v.$topbar-index;
+  }
+  .sidebar {
+    position: fixed;
+    top: v.$topbar-height;
+    left: 0;
+    z-index: v.$sidebar-index;
+    transition: all 0.2s ease-in-out;
+
+    @include v.media("<desktop") {
+      left: -100%;
+    }
+
+    &.open {
+      left: 0;
+    }
+  }
+
+  .main {
+    background-color: v.$body-bg;
+    min-height: 100vh;
+    margin-left: v.$sidebar-width;
+    padding: (v.$topbar-height + v.$body-padding-desktop)
+      v.$body-padding-desktop 3rem;
+
+    @include v.media("<desktop") {
+      margin-left: 0;
+      padding: (v.$topbar-height + v.$body-padding-tablet + 1rem)
+        v.$body-padding-tablet 2rem;
+    }
+    @include v.media("<desktop") {
+      margin-left: 0;
+      padding: (v.$topbar-height + v.$body-padding-mobile + 1rem)
+        v.$body-padding-mobile 2rem;
+    }
+  }
+}

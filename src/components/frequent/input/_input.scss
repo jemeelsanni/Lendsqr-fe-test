@@ -1,0 +1,37 @@
+@use "/src/styles/index.scss" as v;
+
+.input-field-container {
+  width: 100%;
+  font-size: 0.875rem;
+  border: 1px solid;
+  border-color: rgba(v.$col-grey-500, 15%);
+  border-radius: v.$input-radius;
+  @include v.flex($align: center);
+
+  &:focus-within {
+    border-color: rgba(v.$col-blue-800, 80%);
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem 1.2rem;
+    border-radius: v.$input-radius;
+    border: 0;
+    outline: 0;
+    font-size: inherit;
+
+    &:active,
+    :focus {
+      border: 0;
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: v.$col-grey-500;
+    }
+  }
+
+  .input-error {
+    color: v.$col-red-600;
+  }
+}

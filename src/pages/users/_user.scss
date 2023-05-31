@@ -1,0 +1,127 @@
+@use "/src/styles/index.scss" as v;
+
+.user-page {
+  .analytics-card-row {
+    margin-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @include v.media("<desktop") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include v.media("<tablet") {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    gap: 1.625rem;
+
+    .analytics-card {
+      @include v.flex();
+      flex-direction: column;
+
+      .label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-top: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 0.875rem;
+        line-height: 1.17em;
+      }
+    }
+  }
+
+  .users-table {
+    position: relative;
+
+    .org-col,
+    .name-col,
+    .email-col,
+    .phone-col,
+    .created-col {
+      padding-right: 1.5rem;
+      word-break: break-all;
+    }
+
+    .actions-col {
+      padding: 1.5rem;
+      height: 100%;
+      position: relative;
+      button {
+        width: 0.25rem;
+      }
+    }
+
+    .table-row {
+      .status-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-radius: 20rem;
+        padding: 0.5rem 0.875rem;
+
+        &.active {
+          color: v.$success;
+          background-color: rgba(v.$success, $alpha: 0.1);
+        }
+        &.inactive {
+          color: v.$inactive;
+          background-color: rgba(v.$inactive, $alpha: 0.1);
+        }
+        &.pending {
+          color: v.$warning;
+          background-color: rgba(v.$warning, $alpha: 0.1);
+        }
+        &.blacklisted {
+          color: v.$danger;
+          background-color: rgba(v.$danger, $alpha: 0.1);
+        }
+      }
+      .dropdown-menu {
+        top: 20%;
+      }
+
+      &:last-of-type {
+        .dropdown-menu {
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+
+    .filter-dropdown {
+      top: 1.3rem;
+      left: 0;
+      width: 16.875rem;
+      padding: 1.875rem 1.25rem 1.75rem;
+      transform-origin: top left;
+
+      form {
+        @include v.flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .input-container {
+        width: 100%;
+      }
+
+      .button-row {
+        @include v.flex($justify: space-between);
+        width: 100%;
+        margin-top: 0.625rem;
+
+        .outlined-btn {
+          border: 1px solid v.$col-grey-500;
+          color: v.$col-grey-500;
+          &:hover {
+            background-color: v.$col-grey-500;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
